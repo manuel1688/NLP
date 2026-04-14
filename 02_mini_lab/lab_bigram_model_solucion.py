@@ -112,6 +112,41 @@ bigram_counts = {
     ('de', 'servir'): 1
 }
 
+four_gram_counts = {
+    ('lava', 'las', 'verduras', 'antes'): 1,
+    ('las', 'verduras', 'antes', 'de'): 1,
+    ('verduras', 'antes', 'de', 'cortar'): 1,
+    ('corta', 'el', 'pollo', 'en'): 1,
+    ('el', 'pollo', 'en', 'piezas'): 1,
+    ('mezcla', 'la', 'harina', 'con'): 1,
+    ('la', 'harina', 'con', 'el'): 1,
+    ('harina', 'con', 'el', 'agua'): 1,
+    ('hierve', 'el', 'agua', 'por'): 1,
+    ('el', 'agua', 'por', 'cinco'): 1,
+    ('agua', 'por', 'cinco', 'minutos'): 1,
+    ('calienta', 'el', 'aceite', 'en'): 1,
+    ('el', 'aceite', 'en', 'la'): 1,
+    ('aceite', 'en', 'la', 'sartén'): 1,
+    ('fríe', 'el', 'pollo', 'en'): 1,
+    ('el', 'pollo', 'en', 'aceite'): 1,
+    ('pollo', 'en', 'aceite', 'caliente'): 1,
+    ('añade', 'sal', 'al', 'gusto'): 1,
+    ('añade', 'pimienta', 'al', 'gusto'): 1,
+    ('mezcla', 'el', 'arroz', 'con'): 1,
+    ('sirve', 'el', 'arroz', 'con'): 1,
+    ('el', 'arroz', 'con', 'pollo'): 2,
+    ('cocina', 'el', 'arroz', 'en'): 1,
+    ('el', 'arroz', 'en', 'la'): 1,
+    ('arroz', 'en', 'la', 'olla'): 1,
+    ('sirve', 'la', 'sopa', 'con'): 1,
+    ('la', 'sopa', 'con', 'pan'): 1,
+    ('deja', 'enfriar', 'la', 'comida'): 1,
+    ('enfriar', 'la', 'comida', 'antes'): 1,
+    ('la', 'comida', 'antes', 'de'): 1,
+    ('comida', 'antes', 'de', 'servir'): 1
+}
+
+
 def get_trigram(w1, w2):
     coincidencias = {w3: count for (a, b, w3), count in trigram_counts.items() if a == w1 and b == w2}
     if not coincidencias:
@@ -128,6 +163,14 @@ def get_bigram(w1):
     return [(w2, count, round(count / total_corpus * 100, 2)) for w2, count in sorted(coincidencias.items(), key=lambda x: -x[1])]
 
 
+def get_fourgram(w1, w2, w3):
+    coincidencias = {w4: count for (a, b, c, w4), count in four_gram_counts.items() if a == w1 and b == w2 and c == w3}
+    if not coincidencias:
+        return []
+    total_corpus = sum(four_gram_counts.values())
+    return [(w4, count, round(count / total_corpus * 100, 2)) for w4, count in sorted(coincidencias.items(), key=lambda x: -x[1])]
+
+
 def predecir_trim_gram(predicciones):
     if not predicciones:
         return None
@@ -142,14 +185,26 @@ def predecir_bigram(predicciones):
     return palabra
 
 
-if __name__ == "__main__":
-    tri_gram = get_trigram("el", "arroz")
-    print(tri_gram)
-    resultado = predecir_trim_gram(tri_gram) 
-    print(resultado)
+def predecir_fourgram(predicciones):
+    if not predicciones:
+        return None
+    palabra, conteo, porcentaje = predicciones[0]
+    return palabra
 
+
+if __name__ == "__main__":
+
+    print("el")
     bi_gram = get_bigram("el")
     print(bi_gram)
     resultado_bi = predecir_bigram(bi_gram)
     print(resultado_bi)
+
+    tri_gram = get_trigram("el", "arroz")
+    print(predecir_trim_gram(tri_gram))
+
+    four_gram = get_fourgram("el", "arroz", "con")
+    print(predecir_fourgram(four_gram))
+
+    
 
