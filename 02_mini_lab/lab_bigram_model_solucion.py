@@ -147,6 +147,7 @@ four_gram_counts = {
 }
 
 
+# Busca trigramas que empiecen con (w1, w2) y retorna lista de (palabra, conteo, porcentaje)
 def get_trigram(w1, w2):
     coincidencias = {w3: count for (a, b, w3), count in trigram_counts.items() if a == w1 and b == w2}
     if not coincidencias:
@@ -155,6 +156,7 @@ def get_trigram(w1, w2):
     return [(w3, count, round(count / total_corpus * 100, 2)) for w3, count in sorted(coincidencias.items(), key=lambda x: -x[1])]
 
 
+# Busca bigramas que empiecen con w1 y retorna lista de (palabra, conteo, porcentaje)
 def get_bigram(w1):
     coincidencias = {w2: count for (a, w2), count in bigram_counts.items() if a == w1}
     if not coincidencias:
@@ -163,6 +165,7 @@ def get_bigram(w1):
     return [(w2, count, round(count / total_corpus * 100, 2)) for w2, count in sorted(coincidencias.items(), key=lambda x: -x[1])]
 
 
+# Busca 4-gramas que empiecen con (w1, w2, w3) y retorna lista de (palabra, conteo, porcentaje)
 def get_fourgram(w1, w2, w3):
     coincidencias = {w4: count for (a, b, c, w4), count in four_gram_counts.items() if a == w1 and b == w2 and c == w3}
     if not coincidencias:
@@ -171,6 +174,7 @@ def get_fourgram(w1, w2, w3):
     return [(w4, count, round(count / total_corpus * 100, 2)) for w4, count in sorted(coincidencias.items(), key=lambda x: -x[1])]
 
 
+# Recibe la lista de predicciones de un trigrama y retorna la palabra más probable
 def predecir_trim_gram(predicciones):
     if not predicciones:
         return None
@@ -178,6 +182,7 @@ def predecir_trim_gram(predicciones):
     return palabra
 
 
+# Recibe la lista de predicciones de un bigrama y retorna la palabra más probable
 def predecir_bigram(predicciones):
     if not predicciones:
         return None
@@ -185,6 +190,7 @@ def predecir_bigram(predicciones):
     return palabra
 
 
+# Recibe la lista de predicciones de un 4-grama y retorna la palabra más probable
 def predecir_fourgram(predicciones):
     if not predicciones:
         return None
@@ -192,19 +198,100 @@ def predecir_fourgram(predicciones):
     return palabra
 
 
+# Genera una oración encadenando predicciones de bigramas a partir de una palabra inicial
+def generar_oracion(palabra_inicio, n_palabras):
+    palabras = [palabra_inicio]
+    for _ in range(n_palabras - 1):
+        siguiente = predecir_bigram(get_bigram(palabras[-1]))
+        if siguiente is None:
+            break
+        palabras.append(siguiente)
+    return " ".join(palabras)
+
+
+# Calcula la probabilidad conjunta de una oración multiplicando probabilidades de cada bigrama
+def probabilidad_oracion(oracion):
+    palabras = oracion.split()
+    total = sum(bigram_counts.values())
+    prob = 1.0
+    for i in range(len(palabras) - 1):
+        conteo = bigram_counts.get((palabras[i], palabras[i + 1]), 0)
+        if conteo == 0:
+            return 0.0
+        prob *= conteo / total
+    return prob
+
+
+# Compara qué predice bigram vs trigram vs fourgram para una misma palabra inicial
+def comparar_modelos(palabra):
+    bi = predecir_bigram(get_bigram(palabra))
+    tri = predecir_trim_gram(get_trigram(palabra, bi)) if bi else None
+    four = predecir_fourgram(get_fourgram(palabra, bi, tri)) if bi and tri else None
+    return {"bigram": bi, "trigram": tri, "fourgram": four}
+
+
+# Aplica suavizado de Laplace (+1) para evitar probabilidad cero en n-gramas no vistos
+def suavizado_laplace(ngram_counts, ngram_buscado):
+    vocabulario = set()
+    for ngram in ngram_counts:
+        for palabra in ngram:
+            vocabulario.add(palabra)
+    v = len(vocabulario)
+    conteo = ngram_counts.get(ngram_buscado, 0)
+    total = sum(ngram_counts.values())
+    return (conteo + 1) / (total + v)
+
+
+import math
+
+# Calcula la perplejidad de una oración (menor = el modelo conoce mejor el texto)
+def perplejidad(oracion):
+    palabras = oracion.split()
+    total = sum(bigram_counts.values())
+    v = len(set(w for bg in bigram_counts for w in bg))
+    n = len(palabras) - 1
+    if n == 0:
+        return float('inf')
+    log_prob = 0.0
+    for i in range(n):
+        conteo = bigram_counts.get((palabras[i], palabras[i + 1]), 0)
+        prob = (conteo + 1) / (total + v)
+        log_prob += math.log2(prob)
+    return round(2 ** (-log_prob / n), 4)
+
+
 if __name__ == "__main__":
 
-    print("el")
+    print("=== Bigram ===")
     bi_gram = get_bigram("el")
     print(bi_gram)
-    resultado_bi = predecir_bigram(bi_gram)
-    print(resultado_bi)
+    print(predecir_bigram(bi_gram))
 
+    print("\n=== Trigram ===")
     tri_gram = get_trigram("el", "arroz")
     print(predecir_trim_gram(tri_gram))
 
+    print("\n=== Fourgram ===")
     four_gram = get_fourgram("el", "arroz", "con")
     print(predecir_fourgram(four_gram))
+
+    print("\n=== Generar oración ===")
+    print(generar_oracion("el", 5))
+
+    print("\n=== Probabilidad de oración ===")
+    print(probabilidad_oracion("el arroz con pollo"))
+    print(probabilidad_oracion("el pollo en piezas"))
+
+    print("\n=== Comparar modelos ===")
+    print(comparar_modelos("el"))
+
+    print("\n=== Suavizado Laplace ===")
+    print(suavizado_laplace(bigram_counts, ("el", "arroz")))
+    print(suavizado_laplace(bigram_counts, ("el", "pizza")))
+
+    print("\n=== Perplejidad ===")
+    print(perplejidad("el arroz con pollo"))
+    print(perplejidad("el pizza con agua"))
 
     
 
