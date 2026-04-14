@@ -112,7 +112,7 @@ bigram_counts = {
     ('de', 'servir'): 1
 }
 
-def get_predicciones_trigram(w1, w2):
+def get_trigram(w1, w2):
     coincidencias = {w3: count for (a, b, w3), count in trigram_counts.items() if a == w1 and b == w2}
     if not coincidencias:
         return []
@@ -120,7 +120,22 @@ def get_predicciones_trigram(w1, w2):
     return [(w3, count, round(count / total_corpus * 100, 2)) for w3, count in sorted(coincidencias.items(), key=lambda x: -x[1])]
 
 
-def predecir_siguiente(predicciones):
+def get_bigram(w1):
+    coincidencias = {w2: count for (a, w2), count in bigram_counts.items() if a == w1}
+    if not coincidencias:
+        return []
+    total_corpus = sum(bigram_counts.values())
+    return [(w2, count, round(count / total_corpus * 100, 2)) for w2, count in sorted(coincidencias.items(), key=lambda x: -x[1])]
+
+
+def predecir_trim_gram(predicciones):
+    if not predicciones:
+        return None
+    palabra, conteo, porcentaje = predicciones[0]
+    return palabra
+
+
+def predecir_bigram(predicciones):
     if not predicciones:
         return None
     palabra, conteo, porcentaje = predicciones[0]
@@ -128,7 +143,13 @@ def predecir_siguiente(predicciones):
 
 
 if __name__ == "__main__":
-    tri_gram = get_predicciones_trigram("el", "arroz")
-    resultado = predecir_siguiente(tri_gram) 
+    tri_gram = get_trigram("el", "arroz")
+    print(tri_gram)
+    resultado = predecir_trim_gram(tri_gram) 
     print(resultado)
+
+    bi_gram = get_bigram("el")
+    print(bi_gram)
+    resultado_bi = predecir_bigram(bi_gram)
+    print(resultado_bi)
 
