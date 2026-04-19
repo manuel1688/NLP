@@ -5,6 +5,29 @@
 
 ---
 
+## 📚 Glosario
+
+> [!TIP]
+> Lee esto primero — cada término aparece en los pasos siguientes. Puedes volver aquí si alguno no queda claro.
+
+| Término | Qué es |
+|---|---|
+| `W_embed` | Matriz **(V × D)**. Cada fila es el vector de una palabra cuando actúa como **objetivo** (target). La fila `i` corresponde a la palabra con índice `i`. |
+| `W_context` | Matriz **(V × D)**. Igual que `W_embed` pero para cuando la palabra actúa como **contexto**. Son dos matrices separadas — cada palabra tiene dos vectores. |
+| `v_t` | El vector del target en el paso actual. Se obtiene con un lookup: `v_t = W_embed[idx_target]`. |
+| `dot product` | `dot(a, b) = a[0]×b[0] + a[1]×b[1] + ...` — suma de productos elemento a elemento. Mide qué tan "alineados" están dos vectores. Score alto = palabras relacionadas. |
+| `score` | Resultado del producto punto entre `v_t` y una fila de `W_context`. Un número — puede ser positivo o negativo. |
+| `σ` (sigmoid) | `σ(x) = 1 / (1 + e^{-x})` — convierte cualquier score en un valor entre 0 y 1. Aquí = probabilidad de que el par sea real. |
+| `Loss` | Número que mide cuánto se equivocó el modelo en este paso. El objetivo del entrenamiento es reducirlo hacia 0. |
+| `Gradiente` | Vector que dice **en qué dirección y cuánto** cambiar los pesos para reducir el Loss. Se calcula con la regla de la cadena. |
+| `SGD` | Regla de actualización: `W -= lr × gradiente`. Da un pequeño paso en la dirección que reduce el Loss. |
+| `lr` (learning rate) | Controla el tamaño del paso SGD. Muy alto → inestable. Muy bajo → aprende lento. Típico: `0.025`. |
+| `Negative Sampling` | Técnica que en vez de calcular softmax sobre todo el vocabulario, entrena comparando **un par real** contra **K pares falsos** aleatorios. Mucho más rápido. |
+| `par positivo` | Par *(target, contexto)* que sí aparece en el corpus. Label = `1`. |
+| `par negativo` | Par *(target, palabra_aleatoria)* inventado. Label = `0`. El modelo debe aprender que es falso. |
+
+---
+
 ## 0. 🎯 Punto de Partida
 
 ### Vocabulario
