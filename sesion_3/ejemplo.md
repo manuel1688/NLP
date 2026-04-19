@@ -152,6 +152,39 @@ Esto hace que los gradientes se interfieran entre sí y el modelo aprende mal.
 
 ## 2. ⚡ Forward Pass — Calcular Scores
 
+### ¿Qué es un score y para qué sirve?
+
+Un **score** es un único número que mide qué tan compatibles son dos vectores —
+en este caso, el vector del target y el vector de una palabra de contexto.
+
+La función que lo calcula es el **producto punto** (dot product): multiplica
+los elementos en la misma posición y los suma.
+
+```
+score = dot(v_target, v_contexto)
+      = v[0]×c[0]  +  v[1]×c[1]  +  ...  +  v[D-1]×c[D-1]
+```
+
+Es una **operación lineal** — no hay exponenciales, raíces, ni nada no-lineal.
+Solo multiplicaciones y sumas.
+
+#### ¿Qué significa el valor del score?
+
+| Score | Interpretación |
+|---|---|
+| **Positivo alto** (`+2.5`) | Los vectores apuntan en la misma dirección → las palabras son compatibles |
+| **Cercano a 0** (`0.01`) | Los vectores son casi perpendiculares → sin relación clara |
+| **Negativo** (`-1.3`) | Los vectores apuntan en direcciones opuestas → las palabras son incompatibles |
+
+Al inicio del entrenamiento los scores son casi cero (porque los pesos son pequeños aleatorios).
+A medida que el modelo aprende, el score del **par positivo** sube y los de los **pares negativos** bajan.
+
+> [!NOTE]
+> El score por sí solo no es una probabilidad — puede ser cualquier número real.
+> Es el **sigmoid** (Paso 3) el que lo convierte en un valor entre 0 y 1.
+
+---
+
 ### Paso 2a — Lookup del vector target
 
 > [!TIP]
