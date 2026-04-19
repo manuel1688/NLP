@@ -118,3 +118,17 @@ for split in dataset_filtrado:
 
 print("\n[ FASE 1 y 2 COMPLETAS ]")
 print("  Siguiente paso: Fase 3 — Balanceo de clases (ver reconocer_sentimiento.md)")
+
+# ----------------------------------------------------------------
+# RESULTADO FINAL
+# ----------------------------------------------------------------
+# Al terminar este script se tiene en memoria:
+#
+#   dataset_filtrado  —  DatasetDict con tres splits (train / validation / test)
+#                        cada uno con las columnas originales del dataset
+#                        mas la columna 'label' (0 = negativo, 1 = positivo)
+#                        SIN reseñas de 3 estrellas
+#
+# No se escribe ningun archivo en disco todavia.
+# El guardado ocurre en la Fase 6 (corpus_train.jsonl / corpus_test.jsonl).
+# ----------------------------------------------------------------
