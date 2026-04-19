@@ -145,14 +145,74 @@ score_neg2 = dot(v_t, W_context[2])
 
 ## 3. 📊 Sigmoid — Convertir Scores en Probabilidades
 
-> [!NOTE]
-> **¿Por qué sigmoid y no softmax?**
-> Negative Sampling convierte el problema en clasificaciones binarias independientes:
-> par real = `1`, par falso = `0`. Sigmoid devuelve la probabilidad de que el par sea real.
+### Softmax vs Sigmoid — ¿cuál usar y por qué?
+
+Hay dos formas de convertir scores en probabilidades. Ambas son válidas; se usan en contextos distintos.
+
+#### Opción A — Softmax (modelo original Word2Vec)
+
+Toma **todos** los scores del vocabulario y los convierte en una distribución de probabilidad que suma 1.
 
 ```
-σ(x) = 1 / (1 + e^{-x})
+softmax(zᵢ) = e^{zᵢ} / Σⱼ e^{zⱼ}
 ```
+
+Con nuestros scores `z = [-0.053, 0.066, -0.041, ...]` (uno por cada palabra del vocabulario):
+
+```python
+# Vocabulario de 4 palabras — en la practica son 30.000+
+e^{-0.053} ≈ 0.948
+e^{ 0.066} ≈ 1.068
+e^{-0.041} ≈ 0.960
+e^{ 0.010} ≈ 1.010     # "perro", score inventado
+
+S = 0.948 + 1.068 + 0.960 + 1.010 = 3.986
+
+P(come)   = 0.948 / 3.986 ≈ 0.238
+P(gato)   = 1.068 / 3.986 ≈ 0.268
+P(camina) = 0.960 / 3.986 ≈ 0.241
+P(perro)  = 1.010 / 3.986 ≈ 0.253
+```
+
+> [!WARNING]
+> **Problema:** con un vocabulario real de 50.000 palabras hay que calcular
+> `e^{zᵢ}` para **todas** ellas en cada par de entrenamiento.
+> Con millones de pares por época, esto es computacionalmente prohibitivo.
+
+---
+
+#### Opción B — Sigmoid + Negative Sampling *(la que usamos)*
+
+En vez de comparar contra todo el vocabulario, se compara el par real contra
+**K pares falsos** elegidos al azar. Cada comparación es binaria: real (`1`) o falso (`0`).
+
+```
+σ(x) = 1 / (1 + e^{-x})      # un solo numero → probabilidad entre 0 y 1
+```
+
+```python
+# Solo 3 calculos en vez de 50.000
+σ(score_pos)  = σ(-0.053) ≈ 0.487   # queremos → 1.0
+σ(score_neg1) = σ( 0.066) ≈ 0.516   # queremos → 0.0
+σ(score_neg2) = σ(-0.041) ≈ 0.490   # queremos → 0.0
+```
+
+> [!NOTE]
+> **¿Se pierde calidad?** No significativamente. Mikolov et al. (2013) demostraron
+> que con `K = 5–20` muestras negativas los embeddings son igual de buenos
+> que con softmax completo, pero el entrenamiento es **~100x más rápido**.
+
+#### Comparación
+
+| | Softmax | Sigmoid + NS |
+|---|---|---|
+| Cálculos por par | `V` (todo el vocab) | `K + 1` (típico: 6–21) |
+| Probabilidades | Suman 1 (distribución) | Independientes (binarias) |
+| Escala | Lento con vocab grande | Rápido siempre |
+| Calidad embeddings | Alta | Alta (con K ≥ 5) |
+| **¿Cuál usamos?** | Explicación conceptual | **En el código** |
+
+---
 
 ### `σ(score_pos)` — par positivo (`come`)
 
