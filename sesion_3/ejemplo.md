@@ -66,9 +66,28 @@
 
 Dos matrices de dimensión **(V × D) = (4 × 2)** — una fila por palabra.
 
-> [!NOTE]
-> En la práctica `W_embed ~ Normal(0, 0.01)` y `W_context = zeros`.
-> Aquí usamos valores no-cero para que los gradientes sean ilustrativos.
+### ¿De dónde salen los valores de estas matrices?
+
+| Situación | ¿De dónde vienen los valores? |
+|---|---|
+| **En este ejemplo** | Elegidos a mano para producir gradientes no triviales y números legibles |
+| **Día 0, entrenamiento real** | `np.random.normal(0, 0.01, (V, D))` — pequeños valores aleatorios, sin ningún significado aún |
+| **Después de entrenar** | Modificados paso a paso por el gradiente (Pasos 5-6 de este documento) — las filas de palabras que aparecen en contextos similares convergen hacia vectores parecidos |
+
+```python
+# Inicialización real en código (V palabras, D dimensiones)
+V, D = 28130, 100
+W_embed   = np.random.normal(0, 0.01, (V, D))   # pequeños aleatorios
+W_context = np.zeros((V, D))                     # ceros — convención común
+```
+
+> [!IMPORTANT]
+> **`W_embed` es el modelo aprendido.** La fila `i` no representa a la palabra `i`
+> desde el principio — empieza como números aleatorios sin sentido.
+> Es el entrenamiento (miles de pasos como el de este ejemplo) lo que convierte
+> esa fila en un vector con significado.
+> En este ejemplo usamos valores no-cero en `W_context` también,
+> para que los gradientes sean ilustrativos al llegar al Paso 5.
 
 ### `W_embed` — Matriz de palabras objetivo
 
@@ -79,6 +98,30 @@ Dos matrices de dimensión **(V × D) = (4 × 2)** — una fila por palabra.
 | `2`  | `"camina"` | `[-0.09,  0.33]`  |                  |
 | `3`  | `"perro"`  | `[ 0.13, -0.27]`  | ← **usaremos esta** |
 
+#### ¿Qué representa cada fila?
+
+Cada fila es la **posición** de una palabra en un espacio de `D` dimensiones.
+Con `D = 2`, cada palabra es un punto en un plano. Con `D = 100`, es un punto
+en un espacio de 100 dimensiones (no visualizable, pero matemáticamente idéntico).
+
+```
+  Antes de entrenar           Después de entrenar
+  (aleatorio)                 (aprendido)
+
+  perro  •  • gato            perro • gato
+                               ↑    ↑
+  camina •   • come           (cerca — mamíferos)
+
+                              camina •    come •
+                              (lejos de los anteriores)
+```
+
+> [!TIP]
+> En el **Paso 6** de este documento verás exactamente cómo el gradiente
+> mueve la fila `[0.13, -0.27]` de "perro" una fracción hacia una posición
+> que reduce el error. Ese movimiento repetido millones de veces es lo que
+> produce embeddings útiles.
+
 ### `W_context` — Matriz de palabras contexto
 
 | Fila | Palabra    | Vector            | Uso              |
@@ -87,6 +130,23 @@ Dos matrices de dimensión **(V × D) = (4 × 2)** — una fila por palabra.
 | `1`  | `"gato"`   | `[ 0.30, -0.10]`  | ← negativa 1     |
 | `2`  | `"camina"` | `[-0.15,  0.08]`  | ← negativa 2     |
 | `3`  | `"perro"`  | `[ 0.01, -0.05]`  |                  |
+
+#### ¿Por qué dos matrices y no una?
+
+En Skip-gram cada palabra juega dos roles distintos:
+
+| Rol | Cuándo | Acción | Matriz |
+|---|---|---|---|
+| **Target** | Es la palabra que damos al modelo | Su vector actúa como "pregunta" | `W_embed` |
+| **Contexto** | Es la palabra que el modelo intenta predecir | Su vector actúa como "respuesta" | `W_context` |
+
+Si usáramos una sola matriz, el vector de "perro" haría los dos roles al mismo tiempo.
+Esto hace que los gradientes se interfieran entre sí y el modelo aprende mal.
+
+> [!NOTE]
+> **En producción**, al terminar el entrenamiento se descarta `W_context`
+> y solo se usa `W_embed`. Las dos matrices son necesarias **durante** el
+> entrenamiento, pero el producto final es únicamente `W_embed`.
 
 ---
 
