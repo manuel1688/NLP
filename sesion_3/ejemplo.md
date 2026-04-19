@@ -505,3 +505,185 @@ dot([0.124, -0.258], [0.057,  0.206])
 | 5 | **Gradientes** `∂L/∂v_t` y `∂L/∂v_c` por cada c | Dirección de ajuste |
 | 6 | **SGD** `W -= lr × gradiente` | Pesos actualizados |
 | 7 | **Repetir** con el siguiente par del corpus | Loss baja por época |
+
+---
+
+## 8. 🗺️ ¿Por Qué Solo un Paso No Es Suficiente? — De Vectores Aleatorios a Significado
+
+> Esta sección es para quien no sabe nada de Machine Learning.
+> No hay fórmulas nuevas — solo los mismos números que ya viste, explicados de otra manera.
+
+---
+
+### Imagina un mapa
+
+Piensa que cada palabra del vocabulario es un punto en un mapa.
+Al principio del entrenamiento ese mapa se ve así:
+
+```
+  Inicio — puntos tirados al azar
+  ─────────────────────────────────
+  ·  perro          ·  come
+
+         ·  libro
+
+    ·  gato    ·  camina
+
+  ─────────────────────────────────
+  "perro" y "gato" están lejos aunque sean similares.
+  El mapa no tiene ningún sentido todavía.
+```
+
+El entrenamiento es el proceso de **mover esos puntos** hasta que el mapa tenga sentido.
+
+---
+
+### Skip-gram: la pregunta que hace el modelo
+
+El modelo lee el corpus oración por oración.
+Por cada palabra que ve, se hace una sola pregunta:
+
+> *"Si yo soy la palabra **perro**, ¿qué palabras suelen aparecer cerca de mí en el texto?"*
+
+Con una ventana de tamaño 2, las respuestas son los 2 vecinos de cada lado.
+Eso genera pares como estos:
+
+| Oración del corpus | Target | Contexto |
+|---|---|---|
+| "el **perro** come hueso" | perro | el, come, hueso |
+| "el **perro** duerme mucho" | perro | el, duerme, mucho |
+| "el **gato** come pescado" | gato | el, come, pescado |
+
+Cada par es un ejemplo de entrenamiento.
+Eso es Skip-gram: **la palabra del centro predice las palabras de su contexto**.
+
+---
+
+### Probabilidad binaria: ¿real o inventado?
+
+Para cada par, el modelo da una respuesta entre 0 y 1:
+
+- **(perro, come)** — par real del corpus. El modelo debe responder **cerca de 1** (es verdadero).
+- **(perro, biblioteca)** — par inventado. El modelo debe responder **cerca de 0** (es falso).
+
+En el ejemplo de este documento:
+
+| Par | Respuesta del modelo | Qué queríamos |
+|---|---|---|
+| (perro, come) | `0.487` | `1.0` — demasiado bajo |
+| (perro, gato) | `0.516` | `0.0` — demasiado alto |
+| (perro, camina) | `0.490` | `0.0` — demasiado alto |
+
+El modelo al inicio no distingue los pares reales de los inventados.
+Eso es normal — los vectores son aleatorios, así que todos los scores salen parecidos.
+
+---
+
+### Loss: el marcador del error
+
+El **loss** es un solo número que resume qué tan equivocado está el modelo en este paso.
+
+- Loss alto → el modelo confunde mucho los pares reales con los falsos.
+- Loss bajo → el modelo los distingue bien.
+
+En el ejemplo calculamos:
+
+```
+Loss = 2.118   ← al inicio, bastante alto
+```
+
+El objetivo del entrenamiento es ir bajando ese número, paso a paso.
+
+---
+
+### Gradiente: la brújula
+
+Después de calcular el loss, el modelo calcula el **gradiente**.
+
+No te preocupes por las matemáticas — la idea es simple:
+
+> El gradiente es una **brújula** que te dice:
+> *"Mueve este vector en esta dirección para que el próximo loss sea un poco más bajo."*
+
+- Para el par real **(perro, come)**: la brújula acerca los vectores de "perro" y "come".
+- Para los pares falsos **(perro, gato)** y **(perro, camina)**: la brújula los aleja.
+
+---
+
+### SGD: el pequeño paso
+
+Con la brújula en mano, el modelo da un paso muy pequeño.
+`lr = 0.1` significa que se avanza solo el 10% de lo que la brújula indica.
+
+Los resultados del ejemplo:
+
+```
+  "perro"  antes:  [ 0.130, -0.270]
+  "perro"  después: [ 0.124, -0.258]   ← se movió un poco
+```
+
+Y el score del par real:
+
+```
+  score(perro, come)  antes:  -0.053
+  score(perro, come)  después: -0.046   ← subió, va en la dirección correcta
+```
+
+Un cambio minúsculo. Pero en la dirección correcta.
+
+---
+
+### La clave: millones de pequeños pasos
+
+Un solo paso es insignificante.
+La magia está en la **repetición**.
+
+Imagina que el corpus tiene 1 millón de oraciones.
+Word2Vec genera decenas de millones de pares y repite este proceso para cada uno.
+
+```
+  Época 0 — vectores aleatorios
+  ─────────────────────────────────────────
+  · perro    · libro    · come
+
+       · gato          · camina   · estudia
+
+  Época 1 — ligero agrupamiento
+  ─────────────────────────────────────────
+  · perro  · gato           · estudia  · libro
+
+       · come · camina
+
+  Época 5+ — clusters con significado
+  ─────────────────────────────────────────
+  animales:          acciones:        objetos:
+  · perro · gato     · come · duerme  · libro · mesa
+  · lobo  · zorro    · corre· ladra   · silla · lápiz
+```
+
+¿Por qué "perro" y "gato" se acercan?
+Porque **comparten contextos**: ambos aparecen cerca de "come", "duerme", "corre", "ladra".
+Cada vez que el modelo ve uno de esos pares, mueve los vectores un poco más cerca.
+
+¿Por qué "perro" y "libro" se alejan?
+Porque **no comparten contextos**: casi nunca aparecen en las mismas oraciones.
+Los pares (perro, libro) casi nunca son reales — aparecen principalmente como negativos,
+y los pares negativos alejan los vectores.
+
+---
+
+### Eso es todo
+
+> Word2Vec no tiene magia.
+>
+> Solo tiene:
+> - Pares de palabras extraídos del corpus (Skip-gram)
+> - Una pregunta binaria: ¿real o inventado? (probabilidad con sigmoid)
+> - Un marcador de error (loss)
+> - Una brújula que dice hacia dónde moverse (gradiente)
+> - Un pequeño paso en esa dirección (SGD)
+> - Y millones de repeticiones
+>
+> Al final, las palabras que aparecen en contextos similares
+> terminan en posiciones similares del mapa.
+> Eso es un **embedding** — y así se entrena.
