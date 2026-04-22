@@ -9,6 +9,7 @@ Texto crudo → TF-IDF → Vector numérico → Modelo ML → Predicción
 ```
 
 ```python
+import json
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
@@ -16,19 +17,11 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 
 # 1. DATOS: Reviews con etiquetas
-reviews = [
-    "Excelente película, me encantó la actuación",
-    "Muy buena, totalmente recomendada",
-    "Obra maestra, brillante dirección",
-    "Horrible, aburrida y mal actuada",
-    "Pérdida de tiempo, no la vean",
-    "Malísima, me dormí a los 10 minutos"
-]
+with open("corpus_sentimiento_reviews.json", encoding="utf-8") as f:
+    data = json.load(f)
 
-sentimientos = [
-    'positivo', 'positivo', 'positivo',
-    'negativo', 'negativo', 'negativo'
-]
+reviews      = [item["texto"]       for item in data["reviews"]]
+sentimientos = [item["sentimiento"] for item in data["reviews"]]
 
 # 2. REPRESENTACIÓN: Texto → Vectores TF-IDF
 vectorizador = TfidfVectorizer(
@@ -38,7 +31,7 @@ vectorizador = TfidfVectorizer(
 )
 
 X = vectorizador.fit_transform(reviews)
-# X ahora es una matriz sparse de (6 reviews × ~50 features)
+# X ahora es una matriz sparse de (150 reviews × features)
 
 # 3. DIVISIÓN: Train/Test
 X_train, X_test, y_train, y_test = train_test_split(
