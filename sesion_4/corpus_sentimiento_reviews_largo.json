@@ -1,0 +1,1060 @@
+{
+  "metadata": {
+    "descripcion": "Corpus de reviews en español para clasificación de sentimiento",
+    "total_reviews": 150,
+    "sentimientos": ["positivo", "negativo"],
+    "categorias": ["peliculas", "restaurantes", "productos", "servicios", "hoteles"],
+    "idioma": "es"
+  },
+  "reviews": [
+    {
+      "id": 1,
+      "texto": "Excelente película, me encantó cada minuto. La actuación es brillante y la dirección impecable.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 2,
+      "texto": "Horrible experiencia, la peor película que he visto. Aburrida de principio a fin.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 3,
+      "texto": "La comida estaba deliciosa, el servicio fue atento y el ambiente muy acogedor. Totalmente recomendado.",
+      "sentimiento": "positivo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 4,
+      "texto": "Pésimo servicio, la comida fría y el mesero grosero. No vuelvo nunca más.",
+      "sentimiento": "negativo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 5,
+      "texto": "El producto superó mis expectativas. Excelente calidad y llegó rápido.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 6,
+      "texto": "Una estafa total. El producto no funciona y el vendedor no responde.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 7,
+      "texto": "Obra maestra del cine, una historia conmovedora con un final perfecto.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 8,
+      "texto": "Predecible y aburrida, perdí dos horas de mi vida que no recuperaré.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 9,
+      "texto": "El hotel es hermoso, las habitaciones impecables y la vista espectacular.",
+      "sentimiento": "positivo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 10,
+      "texto": "Habitación sucia, ruido toda la noche y personal descortés. Horrible estancia.",
+      "sentimiento": "negativo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 11,
+      "texto": "Me gustó mucho, muy entretenida y con buenos efectos especiales.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 12,
+      "texto": "Qué porquería, no la terminen de ver. Malísimo el guion.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 13,
+      "texto": "El mejor restaurante de la ciudad, sin duda. Cada plato es una experiencia.",
+      "sentimiento": "positivo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 14,
+      "texto": "Carísimo para la pésima calidad que ofrecen. No lo recomiendo.",
+      "sentimiento": "negativo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 15,
+      "texto": "Producto de alta calidad, justo lo que buscaba. Muy satisfecho con la compra.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 16,
+      "texto": "Se rompió a la semana. Muy mala calidad y caro para lo que es.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 17,
+      "texto": "Una película increíble que te hace reflexionar. Actuaciones soberbias.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 18,
+      "texto": "Pretenciosa y lenta. Me dormí a los 20 minutos.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 19,
+      "texto": "Servicio excelente, resolvieron mi problema rápidamente y con amabilidad.",
+      "sentimiento": "positivo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 20,
+      "texto": "Pésima atención al cliente, tardaron semanas en responder y no solucionaron nada.",
+      "sentimiento": "negativo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 21,
+      "texto": "Magnífica experiencia, todo salió perfecto. Superó todas mis expectativas.",
+      "sentimiento": "positivo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 22,
+      "texto": "Un desastre total, nada funcionó como prometieron. Muy decepcionante.",
+      "sentimiento": "negativo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 23,
+      "texto": "La mejor compra que he hecho este año. Funciona perfectamente.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 24,
+      "texto": "No vale la pena, hay opciones mucho mejores y más baratas.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 25,
+      "texto": "Espectacular cinematografía, banda sonora perfecta y una historia emotiva.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 26,
+      "texto": "Trama confusa, personajes planos y un final decepcionante.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 27,
+      "texto": "Ambiente acogedor, comida casera deliciosa y precios razonables.",
+      "sentimiento": "positivo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 28,
+      "texto": "La comida llegó fría, tardaron una eternidad y el sabor era horrible.",
+      "sentimiento": "negativo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 29,
+      "texto": "Hotel fantástico, ubicación perfecta y personal muy atento. Volveré sin duda.",
+      "sentimiento": "positivo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 30,
+      "texto": "Caro y decepcionante. Las fotos no coinciden con la realidad.",
+      "sentimiento": "negativo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 31,
+      "texto": "Muy buena calidad-precio, llegó antes de lo esperado.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 32,
+      "texto": "Publicidad engañosa, no es lo que muestra en las imágenes.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 33,
+      "texto": "Una joya del cine contemporáneo, altamente recomendada.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 34,
+      "texto": "Aburrida y sin sentido, no entiendo las buenas críticas.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 35,
+      "texto": "Atención personalizada y profesional, quedé muy satisfecho.",
+      "sentimiento": "positivo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 36,
+      "texto": "Servicio deplorable, incompetentes y sin ganas de ayudar.",
+      "sentimiento": "negativo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 37,
+      "texto": "Increíble calidad, justo lo que necesitaba. Muy recomendable.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 38,
+      "texto": "Defectuoso desde el primer uso, no funciona como debería.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 39,
+      "texto": "Memorable experiencia culinaria, cada bocado era perfecto.",
+      "sentimiento": "positivo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 40,
+      "texto": "Porción mínima, sabor insípido y excesivamente caro.",
+      "sentimiento": "negativo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 41,
+      "texto": "Me encantó, una película fresca y original con grandes actuaciones.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 42,
+      "texto": "Cliché tras cliché, nada nuevo ni interesante.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 43,
+      "texto": "Habitaciones cómodas, desayuno excelente y buena ubicación.",
+      "sentimiento": "positivo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 44,
+      "texto": "Instalaciones viejas, camas incómodas y baños sucios.",
+      "sentimiento": "negativo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 45,
+      "texto": "Superó mis expectativas, excelente servicio de principio a fin.",
+      "sentimiento": "positivo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 46,
+      "texto": "Impuntuales, desorganizados y poco profesionales.",
+      "sentimiento": "negativo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 47,
+      "texto": "Producto resistente y bien diseñado, vale cada peso.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 48,
+      "texto": "Materiales baratos, se ve de mala calidad.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 49,
+      "texto": "Emotiva y conmovedora, una historia que te llega al corazón.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 50,
+      "texto": "Intentó ser profunda pero terminó siendo pretenciosa y vacía.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 51,
+      "texto": "Delicioso todo, desde las entradas hasta el postre. Gran experiencia.",
+      "sentimiento": "positivo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 52,
+      "texto": "La peor comida que he probado, definitivamente no regreso.",
+      "sentimiento": "negativo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 53,
+      "texto": "Simplemente perfecto, no tengo ninguna queja. 100% recomendado.",
+      "sentimiento": "positivo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 54,
+      "texto": "Decepción total, no cumplió ninguna de las expectativas.",
+      "sentimiento": "negativo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 55,
+      "texto": "Genial, fácil de usar y muy funcional.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 56,
+      "texto": "Complicado de usar y las instrucciones son confusas.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 57,
+      "texto": "Una obra de arte cinematográfica, visualmente impresionante.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 58,
+      "texto": "Efectos especiales baratos y actuaciones mediocres.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 59,
+      "texto": "Rápidos, eficientes y muy amables. Excelente servicio.",
+      "sentimiento": "positivo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 60,
+      "texto": "Lentos, ineficientes y cero empatía con el cliente.",
+      "sentimiento": "negativo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 61,
+      "texto": "Relación calidad-precio imbatible, muy satisfecho.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 62,
+      "texto": "Sobrevalorado y sobrepreciado, no lo vale.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 63,
+      "texto": "Me reí muchísimo, comedia brillante y bien ejecutada.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 64,
+      "texto": "Chistes malos y humor forzado, no da risa.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 65,
+      "texto": "Platos creativos y presentación impecable, una delicia.",
+      "sentimiento": "positivo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 66,
+      "texto": "Comida sin sabor y presentación descuidada.",
+      "sentimiento": "negativo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 67,
+      "texto": "Confortable, limpio y con todas las comodidades. Perfecto.",
+      "sentimiento": "positivo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 68,
+      "texto": "Incómodo, ruidoso y con olores desagradables.",
+      "sentimiento": "negativo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 69,
+      "texto": "Personal capacitado y solución efectiva a mi problema.",
+      "sentimiento": "positivo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 70,
+      "texto": "No saben lo que hacen, empeoraron la situación.",
+      "sentimiento": "negativo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 71,
+      "texto": "Excelente inversión, lo uso todos los días sin problemas.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 72,
+      "texto": "Dinero tirado a la basura, no sirve para nada.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 73,
+      "texto": "Entretenida de principio a fin, muy buena para pasar el rato.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 74,
+      "texto": "Lenta y tediosa, me costó terminarla.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 75,
+      "texto": "Sabores auténticos y porciones generosas. Volveré pronto.",
+      "sentimiento": "positivo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 76,
+      "texto": "Porciones ridículas para el precio que cobran.",
+      "sentimiento": "negativo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 77,
+      "texto": "Todo impecable, desde el check-in hasta el check-out.",
+      "sentimiento": "positivo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 78,
+      "texto": "Problemas desde que llegamos, pésima gestión.",
+      "sentimiento": "negativo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 79,
+      "texto": "Cumplieron lo prometido y más, muy profesionales.",
+      "sentimiento": "positivo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 80,
+      "texto": "Promesas vacías, no cumplieron con nada.",
+      "sentimiento": "negativo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 81,
+      "texto": "Construcción sólida, materiales de primera calidad.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 82,
+      "texto": "Endeble y frágil, se siente barato al tacto.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 83,
+      "texto": "Narrativa envolvente y personajes bien desarrollados.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 84,
+      "texto": "Historia sin sentido y personajes unidimensionales.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 85,
+      "texto": "Carta variada y todo exquisito, gran descubrimiento.",
+      "sentimiento": "positivo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 86,
+      "texto": "Menú limitado y mal ejecutado, muy decepcionante.",
+      "sentimiento": "negativo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 87,
+      "texto": "Instalaciones modernas y bien mantenidas, excelente.",
+      "sentimiento": "positivo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 88,
+      "texto": "Instalaciones obsoletas y descuidadas, necesita renovación urgente.",
+      "sentimiento": "negativo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 89,
+      "texto": "Respuesta inmediata y solución efectiva, quedé encantado.",
+      "sentimiento": "positivo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 90,
+      "texto": "Me tienen en espera desde hace semanas sin respuesta.",
+      "sentimiento": "negativo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 91,
+      "texto": "Funcionalidad excelente, cumple todo lo que promete.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 92,
+      "texto": "No funciona como indica, publicidad engañosa.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 93,
+      "texto": "Dirección magistral, cada escena perfectamente ejecutada.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 94,
+      "texto": "Dirección torpe, escenas mal filmadas y editadas.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 95,
+      "texto": "Cocina de autor, ingredientes frescos, preparación excelente.",
+      "sentimiento": "positivo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 96,
+      "texto": "Ingredientes de baja calidad y mal cocidos.",
+      "sentimiento": "negativo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 97,
+      "texto": "Servicio de lujo, atención personalizada y detalles especiales.",
+      "sentimiento": "positivo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 98,
+      "texto": "Servicio deficiente, personal desinteresado y grosero.",
+      "sentimiento": "negativo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 99,
+      "texto": "Proceso sencillo, claro y sin complicaciones.",
+      "sentimiento": "positivo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 100,
+      "texto": "Proceso complicado, burocrático y frustrante.",
+      "sentimiento": "negativo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 101,
+      "texto": "Diseño ergonómico y cómodo de usar diariamente.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 102,
+      "texto": "Diseño incómodo, difícil de manejar.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 103,
+      "texto": "Banda sonora emotiva que complementa perfectamente la historia.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 104,
+      "texto": "Música molesta que distrae de la trama.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 105,
+      "texto": "Ambiente romántico, perfecto para una cita especial.",
+      "sentimiento": "positivo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 106,
+      "texto": "Ruidoso, incómodo y sin privacidad.",
+      "sentimiento": "negativo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 107,
+      "texto": "Desayuno buffet variado y de calidad, todo fresco.",
+      "sentimiento": "positivo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 108,
+      "texto": "Desayuno escaso, comida fría y de mala calidad.",
+      "sentimiento": "negativo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 109,
+      "texto": "Transparentes en sus procesos y comunicación constante.",
+      "sentimiento": "positivo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 110,
+      "texto": "Falta de transparencia y comunicación, te dejan en la oscuridad.",
+      "sentimiento": "negativo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 111,
+      "texto": "Durabilidad impresionante, llevo años usándolo sin problemas.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 112,
+      "texto": "Se deterioró rápidamente, pésima durabilidad.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 113,
+      "texto": "Final inesperado y satisfactorio, brillante conclusión.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 114,
+      "texto": "Final decepcionante que arruinó toda la película.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 115,
+      "texto": "Relación precio-calidad excepcional, vale la pena.",
+      "sentimiento": "positivo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 116,
+      "texto": "Excesivamente caro para lo que ofrecen.",
+      "sentimiento": "negativo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 117,
+      "texto": "Spa relajante y servicios de primera, una maravilla.",
+      "sentimiento": "positivo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 118,
+      "texto": "Spa en malas condiciones y servicios mediocres.",
+      "sentimiento": "negativo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 119,
+      "texto": "Flexibles y adaptados a mis necesidades específicas.",
+      "sentimiento": "positivo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 120,
+      "texto": "Inflexibles y rígidos, cero adaptación al cliente.",
+      "sentimiento": "negativo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 121,
+      "texto": "Garantía amplia y servicio postventa excelente.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 122,
+      "texto": "Sin garantía real, servicio postventa inexistente.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 123,
+      "texto": "Fotografía artística, cada cuadro es una obra maestra.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 124,
+      "texto": "Fotografía amateur, mal iluminada y fuera de foco.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 125,
+      "texto": "Chef talentoso, cada plato es una experiencia única.",
+      "sentimiento": "positivo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 126,
+      "texto": "Cocina sin creatividad ni técnica, muy básico.",
+      "sentimiento": "negativo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 127,
+      "texto": "Piscina hermosa, bien mantenida y temperatura perfecta.",
+      "sentimiento": "positivo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 128,
+      "texto": "Piscina sucia, agua turbia y sin mantenimiento.",
+      "sentimiento": "negativo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 129,
+      "texto": "Seguimiento constante y preocupación genuina por el cliente.",
+      "sentimiento": "positivo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 130,
+      "texto": "Te olvidan apenas pagan, cero seguimiento.",
+      "sentimiento": "negativo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 131,
+      "texto": "Empaque cuidado, llegó en perfectas condiciones.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 132,
+      "texto": "Llegó dañado por mal empaque, irresponsables.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 133,
+      "texto": "Diálogos ingeniosos y naturales, excelente guion.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 134,
+      "texto": "Diálogos forzados y poco creíbles, guion pobre.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 135,
+      "texto": "Postres caseros deliciosos, recetas tradicionales bien hechas.",
+      "sentimiento": "positivo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 136,
+      "texto": "Postres comprados y recalentados, nada especial.",
+      "sentimiento": "negativo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 137,
+      "texto": "Vista panorámica increíble desde la habitación.",
+      "sentimiento": "positivo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 138,
+      "texto": "Vista a un muro de concreto, sin ventanas prácticamente.",
+      "sentimiento": "negativo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 139,
+      "texto": "Política de cancelación justa y proceso simple.",
+      "sentimiento": "positivo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 140,
+      "texto": "Política abusiva de cancelación, te cobran todo.",
+      "sentimiento": "negativo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 141,
+      "texto": "Instrucciones claras y fáciles de seguir.",
+      "sentimiento": "positivo",
+      "categoria": "productos"
+    },
+    {
+      "id": 142,
+      "texto": "Manual inexistente y sin soporte técnico.",
+      "sentimiento": "negativo",
+      "categoria": "productos"
+    },
+    {
+      "id": 143,
+      "texto": "Efectos visuales impresionantes, nivel Hollywood.",
+      "sentimiento": "positivo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 144,
+      "texto": "CGI barato y poco convincente.",
+      "sentimiento": "negativo",
+      "categoria": "peliculas"
+    },
+    {
+      "id": 145,
+      "texto": "Vinos excelentes, buena carta y sommelier conocedor.",
+      "sentimiento": "positivo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 146,
+      "texto": "Vinos de mala calidad y mal conservados.",
+      "sentimiento": "negativo",
+      "categoria": "restaurantes"
+    },
+    {
+      "id": 147,
+      "texto": "Gimnasio completo con equipos modernos y limpios.",
+      "sentimiento": "positivo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 148,
+      "texto": "Gimnasio abandonado con máquinas rotas.",
+      "sentimiento": "negativo",
+      "categoria": "hoteles"
+    },
+    {
+      "id": 149,
+      "texto": "Precio competitivo y resultados superiores a la competencia.",
+      "sentimiento": "positivo",
+      "categoria": "servicios"
+    },
+    {
+      "id": 150,
+      "texto": "Resultados mediocres a precio premium, no vale la pena.",
+      "sentimiento": "negativo",
+      "categoria": "servicios"
+    },{"id":151,"texto":"Una película que te atrapa desde el primer fotograma hasta los créditos finales.","sentimiento":"positivo","categoria":"peliculas"},
+    {"id":152,"texto":"Guion ingenioso, actuaciones soberbias y una dirección con visión artística real.","sentimiento":"positivo","categoria":"peliculas"},
+    {"id":153,"texto":"Emotiva, inteligente y entretenida. La combinación perfecta para una gran película.","sentimiento":"positivo","categoria":"peliculas"},
+    {"id":154,"texto":"Un thriller que no te deja respirar, lleno de giros inesperados y resoluciones brillantes.","sentimiento":"positivo","categoria":"peliculas"},
+    {"id":155,"texto":"Personajes profundos y realistas que hacen que te sientas parte de la historia.","sentimiento":"positivo","categoria":"peliculas"},
+    {"id":156,"texto":"Una historia de superación que te llena de energía y esperanza desde la primera escena.","sentimiento":"positivo","categoria":"peliculas"},
+    {"id":157,"texto":"Fotografía impresionante y banda sonora que potencia cada emoción de la trama.","sentimiento":"positivo","categoria":"peliculas"},
+    {"id":158,"texto":"Diálogos precisos, ritmo perfecto y una conclusión que satisface por completo.","sentimiento":"positivo","categoria":"peliculas"},
+    {"id":159,"texto":"Una producción impecable que demuestra el talento de todo el equipo creativo.","sentimiento":"positivo","categoria":"peliculas"},
+    {"id":160,"texto":"Sorprendente desde el inicio, rompe todos los esquemas del género con elegancia.","sentimiento":"positivo","categoria":"peliculas"},
+    {"id":161,"texto":"Comedia fresca y original, llena de humor inteligente que no envejece con el tiempo.","sentimiento":"positivo","categoria":"peliculas"},
+    {"id":162,"texto":"Un drama poderoso que te mueve por dentro y te hace pensar días después de verlo.","sentimiento":"positivo","categoria":"peliculas"},
+    {"id":163,"texto":"La secuela superó al original, algo que pocas veces se logra en el cine moderno.","sentimiento":"positivo","categoria":"peliculas"},
+    {"id":164,"texto":"Actuación magistral del protagonista, merece todos los premios que pueda ganar.","sentimiento":"positivo","categoria":"peliculas"},
+    {"id":165,"texto":"Una aventura visualmente espléndida con un corazón narrativo genuino y emotivo.","sentimiento":"positivo","categoria":"peliculas"},
+    {"id":166,"texto":"Un desperdicio de recursos y talento, la trama es un laberinto sin salida lógica.","sentimiento":"negativo","categoria":"peliculas"},
+    {"id":167,"texto":"Dos horas que nunca recuperaré, un guión lleno de agujeros narrativos sin sentido.","sentimiento":"negativo","categoria":"peliculas"},
+    {"id":168,"texto":"Actuaciones rígidas y poco creíbles, parecen leer el guión por primera vez en cámara.","sentimiento":"negativo","categoria":"peliculas"},
+    {"id":169,"texto":"Una secuela innecesaria que mancha el legado de la primera entrega del director.","sentimiento":"negativo","categoria":"peliculas"},
+    {"id":170,"texto":"Ritmo desesperante, escenas interminables que no aportan nada a la historia.","sentimiento":"negativo","categoria":"peliculas"},
+    {"id":171,"texto":"Intento fallido de ser profunda, termina siendo pedante y completamente aburrida.","sentimiento":"negativo","categoria":"peliculas"},
+    {"id":172,"texto":"Efectos especiales de bajo presupuesto que destruyen cualquier posibilidad de inmersión.","sentimiento":"negativo","categoria":"peliculas"},
+    {"id":173,"texto":"Un final abierto que no cierra nada, da sensación de película sin terminar.","sentimiento":"negativo","categoria":"peliculas"},
+    {"id":174,"texto":"Demasiado larga para tan poco contenido, podría contarse en veinte minutos.","sentimiento":"negativo","categoria":"peliculas"},
+    {"id":175,"texto":"Copia mal disimulada de otras películas del género, sin nada original ni fresco.","sentimiento":"negativo","categoria":"peliculas"},
+    {"id":176,"texto":"Personajes sin profundidad que toman decisiones completamente incomprensibles.","sentimiento":"negativo","categoria":"peliculas"},
+    {"id":177,"texto":"La banda sonora anacrónica arruina momentos que podrían haber funcionado bien.","sentimiento":"negativo","categoria":"peliculas"},
+    {"id":178,"texto":"Prometía mucho en el tráiler pero entregó muy poco una vez en la pantalla grande.","sentimiento":"negativo","categoria":"peliculas"},
+    {"id":179,"texto":"Diálogos forzados que hacen doler los oídos, guion muy por debajo del nivel esperado.","sentimiento":"negativo","categoria":"peliculas"},
+    {"id":180,"texto":"Una decepción monumental de un director del que se esperaba mucho más talento.","sentimiento":"negativo","categoria":"peliculas"},
+    {"id":181,"texto":"Un oasis gastronómico, cada visita es una nueva sorpresa culinaria deliciosa.","sentimiento":"positivo","categoria":"restaurantes"},
+    {"id":182,"texto":"El chef sale a saludar personalmente a cada mesa, un gesto que marca la diferencia.","sentimiento":"positivo","categoria":"restaurantes"},
+    {"id":183,"texto":"Tiempos de espera mínimos y atención que hace sentir especial a cada comensal.","sentimiento":"positivo","categoria":"restaurantes"},
+    {"id":184,"texto":"Ingredientes de temporada que se notan en cada bocado, frescura absolutamente garantizada.","sentimiento":"positivo","categoria":"restaurantes"},
+    {"id":185,"texto":"Lista de vinos curada con criterio, el maridaje es perfecto con cada plato del menú.","sentimiento":"positivo","categoria":"restaurantes"},
+    {"id":186,"texto":"Ambiente tranquilo donde se puede conversar sin necesidad de levantar la voz.","sentimiento":"positivo","categoria":"restaurantes"},
+    {"id":187,"texto":"Carta de postres que podría ser un restaurante por sí sola, de auténtico otro nivel.","sentimiento":"positivo","categoria":"restaurantes"},
+    {"id":188,"texto":"Opciones vegetarianas excelentes, no parecen un añadido sino parte central del menú.","sentimiento":"positivo","categoria":"restaurantes"},
+    {"id":189,"texto":"El mejor ceviche que he probado en mucho tiempo, auténtico y perfectamente ejecutado.","sentimiento":"positivo","categoria":"restaurantes"},
+    {"id":190,"texto":"Local pequeño y acogedor donde todos los detalles están cuidados a la perfección.","sentimiento":"positivo","categoria":"restaurantes"},
+    {"id":191,"texto":"Anotaron mis alergias al reservar y las tuvieron en cuenta en cada plato servido.","sentimiento":"positivo","categoria":"restaurantes"},
+    {"id":192,"texto":"Recetas de la abuela ejecutadas con técnica profesional, lo mejor de ambos mundos.","sentimiento":"positivo","categoria":"restaurantes"},
+    {"id":193,"texto":"Precios muy justos para la calidad que ofrecen, una relación imposible de superar.","sentimiento":"positivo","categoria":"restaurantes"},
+    {"id":194,"texto":"Terracita encantadora para cenar bajo las estrellas, ambiente romántico sin artificio.","sentimiento":"positivo","categoria":"restaurantes"},
+    {"id":195,"texto":"Descubrimiento del año, lo recomendé a todos mis conocidos y volvieron encantados.","sentimiento":"positivo","categoria":"restaurantes"},
+    {"id":196,"texto":"Reservé con semanas de antelación y aun así nos hicieron esperar cuarenta minutos.","sentimiento":"negativo","categoria":"restaurantes"},
+    {"id":197,"texto":"El mesero nos ignoró durante media hora, tuvimos que levantarnos a pedir la cuenta.","sentimiento":"negativo","categoria":"restaurantes"},
+    {"id":198,"texto":"Los platos llegaron a distintas velocidades, la mitad terminó antes de que el otro empezara.","sentimiento":"negativo","categoria":"restaurantes"},
+    {"id":199,"texto":"Carta extensa pero sin calidad, cantidad sobre excelencia en cada plato del menú.","sentimiento":"negativo","categoria":"restaurantes"},
+    {"id":200,"texto":"Música tan alta que es imposible mantener conversación, un bar disfrazado de restaurante.","sentimiento":"negativo","categoria":"restaurantes"},
+    {"id":201,"texto":"El plato llegó frío y al reclamar lo calentaron en microondas, completamente inaceptable.","sentimiento":"negativo","categoria":"restaurantes"},
+    {"id":202,"texto":"Alérgenos mal gestionados, peligroso para personas con intolerancias alimentarias.","sentimiento":"negativo","categoria":"restaurantes"},
+    {"id":203,"texto":"Mesas sucias con restos de la mesa anterior, higiene que deja mucho que desear.","sentimiento":"negativo","categoria":"restaurantes"},
+    {"id":204,"texto":"Cambiaron la carta sin avisar y eliminaron los platos que hacían el lugar especial.","sentimiento":"negativo","categoria":"restaurantes"},
+    {"id":205,"texto":"Personal sin formación que confunde pedidos constantemente durante toda la noche.","sentimiento":"negativo","categoria":"restaurantes"},
+    {"id":206,"texto":"Las raciones se encogen en cada visita mientras el precio sigue subiendo, no lo vale.","sentimiento":"negativo","categoria":"restaurantes"},
+    {"id":207,"texto":"Aceite de mala calidad que se nota en todos los platos y hace pesada la comida.","sentimiento":"negativo","categoria":"restaurantes"},
+    {"id":208,"texto":"Ambiente ruidoso e incómodo, imposible disfrutar la cena con tanta aglomeración.","sentimiento":"negativo","categoria":"restaurantes"},
+    {"id":209,"texto":"Me cobraron un plato que no pedí y fue una batalla lograr que lo retiraran de la cuenta.","sentimiento":"negativo","categoria":"restaurantes"},
+    {"id":210,"texto":"Prometen ingredientes premium pero sirven productos de supermercado a precio de gourmet.","sentimiento":"negativo","categoria":"restaurantes"},
+    {"id":211,"texto":"Llegó antes de lo esperado, empacado con sumo cuidado y en condiciones perfectas.","sentimiento":"positivo","categoria":"productos"},
+    {"id":212,"texto":"La batería dura toda la semana, nunca había visto tanta autonomía en este tipo de producto.","sentimiento":"positivo","categoria":"productos"},
+    {"id":213,"texto":"Fácil de instalar, las instrucciones son claras y el resultado final es impecable.","sentimiento":"positivo","categoria":"productos"},
+    {"id":214,"texto":"Materiales premium que se notan al primer contacto, justifica completamente el precio.","sentimiento":"positivo","categoria":"productos"},
+    {"id":215,"texto":"Compatibilidad perfecta con todos mis dispositivos, sin configuración adicional necesaria.","sentimiento":"positivo","categoria":"productos"},
+    {"id":216,"texto":"El servicio al cliente resolvió mi duda en minutos, atención verdaderamente excepcional.","sentimiento":"positivo","categoria":"productos"},
+    {"id":217,"texto":"Estético y funcional a la vez, combina perfectamente con cualquier tipo de entorno.","sentimiento":"positivo","categoria":"productos"},
+    {"id":218,"texto":"Resistente al agua y a golpes moderados, ideal para uso intensivo en el día a día.","sentimiento":"positivo","categoria":"productos"},
+    {"id":219,"texto":"Actualizaciones constantes que mejoran el producto sin coste adicional, una maravilla.","sentimiento":"positivo","categoria":"productos"},
+    {"id":220,"texto":"Calidad de imagen superior a lo esperado, colores fieles y nitidez impresionante.","sentimiento":"positivo","categoria":"productos"},
+    {"id":221,"texto":"Silencioso en funcionamiento, no lo notarías encendido si no fuera por los resultados.","sentimiento":"positivo","categoria":"productos"},
+    {"id":222,"texto":"Garantía de cinco años que demuestra la confianza del fabricante en su propio producto.","sentimiento":"positivo","categoria":"productos"},
+    {"id":223,"texto":"Ahorra energía de forma notable, la factura eléctrica bajó considerablemente desde que lo uso.","sentimiento":"positivo","categoria":"productos"},
+    {"id":224,"texto":"Packaging sostenible y reciclable, un detalle de responsabilidad que marca la diferencia.","sentimiento":"positivo","categoria":"productos"},
+    {"id":225,"texto":"Probé alternativas más caras y este las supera en todos los aspectos, insuperable.","sentimiento":"positivo","categoria":"productos"},
+    {"id":226,"texto":"El producto llegó con la caja abierta, claramente era una devolución de otro cliente.","sentimiento":"negativo","categoria":"productos"},
+    {"id":227,"texto":"Se sobrecalienta a los diez minutos de uso, lo cual representa un peligro real.","sentimiento":"negativo","categoria":"productos"},
+    {"id":228,"texto":"La mitad de las funciones anunciadas no están disponibles en el modelo básico comprado.","sentimiento":"negativo","categoria":"productos"},
+    {"id":229,"texto":"El servicio técnico ignoró mi reclamación durante semanas hasta que tuve que escalar.","sentimiento":"negativo","categoria":"productos"},
+    {"id":230,"texto":"Compatible solo con sus propios accesorios, una trampa para gastos continuos innecesarios.","sentimiento":"negativo","categoria":"productos"},
+    {"id":231,"texto":"La aplicación de control se cuelga constantemente, hace prácticamente inservible el producto.","sentimiento":"negativo","categoria":"productos"},
+    {"id":232,"texto":"Ruido excesivo en funcionamiento, imposible usarlo sin molestar a todos en casa.","sentimiento":"negativo","categoria":"productos"},
+    {"id":233,"texto":"Las piezas de repuesto no se consiguen en ningún lado, producto sin futuro a largo plazo.","sentimiento":"negativo","categoria":"productos"},
+    {"id":234,"texto":"El color real no coincide con el de las fotos del anuncio, publicidad completamente engañosa.","sentimiento":"negativo","categoria":"productos"},
+    {"id":235,"texto":"Se descargó en pocas horas en el primer uso, muy lejos de la autonomía prometida.","sentimiento":"negativo","categoria":"productos"},
+    {"id":236,"texto":"Las instrucciones solo están disponibles en inglés, sin ninguna opción de idioma local.","sentimiento":"negativo","categoria":"productos"},
+    {"id":237,"texto":"La pantalla se rayó en los primeros días sin haberla golpeado, calidad pésima del material.","sentimiento":"negativo","categoria":"productos"},
+    {"id":238,"texto":"Devolución complicada con mil formularios y plazos ridículos que desaniman al consumidor.","sentimiento":"negativo","categoria":"productos"},
+    {"id":239,"texto":"Olor a plástico barato que no desaparece, señal clara de materiales de muy baja calidad.","sentimiento":"negativo","categoria":"productos"},
+    {"id":240,"texto":"Diseño poco intuitivo que obliga a releer las instrucciones una y otra vez para usarlo.","sentimiento":"negativo","categoria":"productos"},
+    {"id":241,"texto":"Presupuesto detallado y transparente, sin ninguna sorpresa al recibir la factura final.","sentimiento":"positivo","categoria":"servicios"},
+    {"id":242,"texto":"Equipo joven y dinámico que aporta ideas frescas y soluciones verdaderamente creativas.","sentimiento":"positivo","categoria":"servicios"},
+    {"id":243,"texto":"Comunicación diaria sobre el estado del proyecto, nunca nos dejaron sin información.","sentimiento":"positivo","categoria":"servicios"},
+    {"id":244,"texto":"Entregaron antes del plazo prometido y con calidad claramente superior a la esperada.","sentimiento":"positivo","categoria":"servicios"},
+    {"id":245,"texto":"Asesoría personalizada que tomó en cuenta mi situación específica, no un protocolo genérico.","sentimiento":"positivo","categoria":"servicios"},
+    {"id":246,"texto":"Disponibles fuera del horario habitual ante una urgencia, respuesta inmediata y efectiva.","sentimiento":"positivo","categoria":"servicios"},
+    {"id":247,"texto":"Documentación completa y organizada, todo queda por escrito sin ninguna ambigüedad posible.","sentimiento":"positivo","categoria":"servicios"},
+    {"id":248,"texto":"Ofrecieron alternativas más económicas sin que las pidiera, honestidad poco común hoy día.","sentimiento":"positivo","categoria":"servicios"},
+    {"id":249,"texto":"Seguimiento postventa durante meses para asegurarse de que todo siguiera funcionando bien.","sentimiento":"positivo","categoria":"servicios"},
+    {"id":250,"texto":"El equipo superó todos los indicadores acordados, profesionales de primer nivel absoluto.","sentimiento":"positivo","categoria":"servicios"},
+    {"id":251,"texto":"Experiencia sin fricción de principio a fin, todo fluyó con absoluta naturalidad.","sentimiento":"positivo","categoria":"servicios"},
+    {"id":252,"texto":"Formación incluida para que pudiéramos usar el resultado de forma completamente autónoma.","sentimiento":"positivo","categoria":"servicios"},
+    {"id":253,"texto":"Escucharon cada retroalimentación y la integraron sin protestar, actitud verdaderamente ejemplar.","sentimiento":"positivo","categoria":"servicios"},
+    {"id":254,"texto":"Garantía de satisfacción real, no solo en el papel, la cumplieron al pie de la letra.","sentimiento":"positivo","categoria":"servicios"},
+    {"id":255,"texto":"Combinan expertise técnico con trato humano, algo muy difícil de encontrar en el sector.","sentimiento":"positivo","categoria":"servicios"},
+    {"id":256,"texto":"Cambiaron al responsable del proyecto sin avisar, tuvimos que empezar prácticamente desde cero.","sentimiento":"negativo","categoria":"servicios"},
+    {"id":257,"texto":"La factura incluía cargos que nunca aprobé, tuve que pelear para que los retiraran.","sentimiento":"negativo","categoria":"servicios"},
+    {"id":258,"texto":"Vendieron lo que no podían entregar, promesas vacías desde el primer día de contrato.","sentimiento":"negativo","categoria":"servicios"},
+    {"id":259,"texto":"El contrato tenía cláusulas leoninas en letra pequeña, una práctica muy poco ética.","sentimiento":"negativo","categoria":"servicios"},
+    {"id":260,"texto":"Responden rápido antes de contratar y desaparecen completamente después de cobrar.","sentimiento":"negativo","categoria":"servicios"},
+    {"id":261,"texto":"Resultados mediocres que ellos mismos declararon conformes con lo acordado, inaceptable.","sentimiento":"negativo","categoria":"servicios"},
+    {"id":262,"texto":"Sin plan de contingencia ante imprevistos, todo se detuvo al primer problema menor.","sentimiento":"negativo","categoria":"servicios"},
+    {"id":263,"texto":"Equipo poco cualificado para el proyecto que vendieron, faltó expertise real y básico.","sentimiento":"negativo","categoria":"servicios"},
+    {"id":264,"texto":"Los plazos se fueron alargando indefinidamente sin justificación convincente ni responsabilidad.","sentimiento":"negativo","categoria":"servicios"},
+    {"id":265,"texto":"Facturaron horas de trabajo que nunca realizaron, una falta de ética profesional grave.","sentimiento":"negativo","categoria":"servicios"},
+    {"id":266,"texto":"Soporte técnico que solo escala tickets sin resolver nada directamente ni con criterio.","sentimiento":"negativo","categoria":"servicios"},
+    {"id":267,"texto":"Cambiaron condiciones acordadas alegando circunstancias completamente ajenas al contrato.","sentimiento":"negativo","categoria":"servicios"},
+    {"id":268,"texto":"Sin acuse de recibo ni seguimiento, desaparece el dinero y el servicio nunca llega.","sentimiento":"negativo","categoria":"servicios"},
+    {"id":269,"texto":"Nivel de confidencialidad nulo, información sensible de mi empresa circuló sin control.","sentimiento":"negativo","categoria":"servicios"},
+    {"id":270,"texto":"Se excusaron detrás de la letra pequeña para no hacerse cargo de sus propios errores.","sentimiento":"negativo","categoria":"servicios"},
+    {"id":271,"texto":"Check-in express en menos de tres minutos, empezamos las vacaciones con muy buen pie.","sentimiento":"positivo","categoria":"hoteles"},
+    {"id":272,"texto":"Almohadas con firmeza a elegir y cama King de lujo, dormí como nunca antes en viaje.","sentimiento":"positivo","categoria":"hoteles"},
+    {"id":273,"texto":"Cóctel de bienvenida y detalles especiales en la habitación, cuidan cada momento del huésped.","sentimiento":"positivo","categoria":"hoteles"},
+    {"id":274,"texto":"El conserje nos consiguió reserva de último minuto en el mejor restaurante de la ciudad.","sentimiento":"positivo","categoria":"hoteles"},
+    {"id":275,"texto":"Insonorización perfecta, ni el corredor ni la calle se escuchan desde dentro de la habitación.","sentimiento":"positivo","categoria":"hoteles"},
+    {"id":276,"texto":"Terraza privada con jacuzzi incluido sin cargo extra, una experiencia que vale cada peso.","sentimiento":"positivo","categoria":"hoteles"},
+    {"id":277,"texto":"Personal multilingüe disponible siempre, nunca tuve problema de comunicación durante la estancia.","sentimiento":"positivo","categoria":"hoteles"},
+    {"id":278,"texto":"Pet-friendly de verdad, trataron a mi perro exactamente como a un huésped más del hotel.","sentimiento":"positivo","categoria":"hoteles"},
+    {"id":279,"texto":"Late check-out sin cargo adicional cuando lo necesité, flexibilidad que se agradece enormemente.","sentimiento":"positivo","categoria":"hoteles"},
+    {"id":280,"texto":"Servicio de habitaciones disponible las veinticuatro horas con una calidad excepcional.","sentimiento":"positivo","categoria":"hoteles"},
+    {"id":281,"texto":"Actividades diarias incluidas para los niños, los adultos pudimos descansar de verdad.","sentimiento":"positivo","categoria":"hoteles"},
+    {"id":282,"texto":"Traslado al aeropuerto incluido y completamente puntual, sin estrés en el momento del viaje.","sentimiento":"positivo","categoria":"hoteles"},
+    {"id":283,"texto":"Minibar repuesto diariamente sin coste adicional, un plus que marca claramente la diferencia.","sentimiento":"positivo","categoria":"hoteles"},
+    {"id":284,"texto":"Ubicación céntrica que nos permitió movernos a pie a todos los puntos de interés.","sentimiento":"positivo","categoria":"hoteles"},
+    {"id":285,"texto":"Programas de fidelización con ventajas reales y apreciables en cada nueva estancia.","sentimiento":"positivo","categoria":"hoteles"},
+    {"id":286,"texto":"Cobraron el parking como extra a pesar de haberlo incluido expresamente en la reserva.","sentimiento":"negativo","categoria":"hoteles"},
+    {"id":287,"texto":"El aire acondicionado hacía un ruido insoportable que impedía conciliar el sueño.","sentimiento":"negativo","categoria":"hoteles"},
+    {"id":288,"texto":"Televisión con solo tres canales extranjeros y sin opción de streaming, completamente inútil.","sentimiento":"negativo","categoria":"hoteles"},
+    {"id":289,"texto":"La piscina estuvo cerrada toda la semana por mantenimiento sin haberlo comunicado previamente.","sentimiento":"negativo","categoria":"hoteles"},
+    {"id":290,"texto":"Minibar vacío a la llegada y tardaron dos días en reponerlo tras varias quejas reiteradas.","sentimiento":"negativo","categoria":"hoteles"},
+    {"id":291,"texto":"Personal de noche inaccesible, el teléfono de recepción sonaba sin que nadie contestara.","sentimiento":"negativo","categoria":"hoteles"},
+    {"id":292,"texto":"Asignaron habitación de fumadores a pesar de haber reservado expresamente para no fumadores.","sentimiento":"negativo","categoria":"hoteles"},
+    {"id":293,"texto":"La lavandería del hotel dañó varias prendas y se negaron a responsabilizarse del daño.","sentimiento":"negativo","categoria":"hoteles"},
+    {"id":294,"texto":"Toallas y sábanas con manchas visibles, estándares de limpieza muy por debajo de lo aceptable.","sentimiento":"negativo","categoria":"hoteles"},
+    {"id":295,"texto":"Cobro adicional por todo: wifi, caja fuerte, estacionamiento y hasta el desayuno más básico.","sentimiento":"negativo","categoria":"hoteles"},
+    {"id":296,"texto":"Calefacción que no alcanzó temperatura mínima durante toda la estancia en invierno.","sentimiento":"negativo","categoria":"hoteles"},
+    {"id":297,"texto":"Construcción en el edificio adyacente desde las siete de la mañana, un auténtico martirio.","sentimiento":"negativo","categoria":"hoteles"},
+    {"id":298,"texto":"Nos cambiaron de habitación sin previo aviso cuando solo quedaba una noche de estancia.","sentimiento":"negativo","categoria":"hoteles"},
+    {"id":299,"texto":"Fotos del hotel completamente desactualizadas, las instalaciones reales son mucho peores.","sentimiento":"negativo","categoria":"hoteles"},
+    {"id":300,"texto":"Personal de recepción arrogante que trató todas las reclamaciones con total indiferencia.","sentimiento":"negativo","categoria":"hoteles"}
+  ]
+}
