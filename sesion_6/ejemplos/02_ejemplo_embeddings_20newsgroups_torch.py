@@ -26,8 +26,7 @@ tokenizador = AutoTokenizer.from_pretrained(NOMBRE_MODELO)
 modelo = AutoModel.from_pretrained(NOMBRE_MODELO)
 modelo.eval()
 
-y_train = entrenamiento.target
-y_test = prueba.target
+
 
 # Función: convierte una lista de textos en una matriz de embeddings
 def obtener_embeddings(textos, tam_lote=32):
@@ -42,13 +41,14 @@ def obtener_embeddings(textos, tam_lote=32):
             todos_embeddings.append(embeddings.cpu().numpy())
     return np.vstack(todos_embeddings)
 
+
+# Etiquetas y embeddings para entrenamiento y prueba
 y_entrenamiento = entrenamiento.target
 y_prueba = prueba.target
-# Obtiene los embeddings para entrenamiento y prueba
 X_entrenamiento = obtener_embeddings(entrenamiento.data)
 X_prueba = obtener_embeddings(prueba.data)
-y_entrenamiento = entrenamiento.target
-y_prueba = prueba.target
+
+dimension_entrada = X_entrenamiento.shape[1]
 
 dimension_entrada = X_entrenamiento.shape[1]
 # === 3. Clasificador simple en PyTorch (una capa lineal) ===
@@ -60,7 +60,6 @@ class ClasificadorSimple(nn.Module):
     def forward(self, x):
         return self.lineal(x)
 
-dimension_entrada = X_entrenamiento.shape[1]
 num_clases = len(entrenamiento.target_names)
 clasificador = ClasificadorSimple(dimension_entrada, num_clases)
 
