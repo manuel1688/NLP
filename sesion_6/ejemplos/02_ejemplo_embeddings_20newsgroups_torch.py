@@ -1,22 +1,26 @@
+
 # Ejemplo: Clasificación de textos con embeddings semánticos y 20 Newsgroups usando PyTorch
 # -------------------------------------------------------------------------
-# Este script muestra cómo usar un modelo de HuggingFace (MiniLM) en PyTorch
-# para obtener embeddings semánticos y entrenar un clasificador simple.
+# Script didáctico: muestra cómo usar embeddings y un clasificador simple.
+# Usa un modelo preentrenado para vectorizar textos y entrena una red neuronal.
 # -------------------------------------------------------------------------
 
-import torch
-from torch.utils.data import DataLoader, Dataset
-from transformers import AutoTokenizer, AutoModel
-from sklearn.datasets import fetch_20newsgroups
-from sklearn.metrics import classification_report
-import numpy as np
+# === DEPENDENCIAS ===
+import torch  # Operaciones con tensores y redes neuronales
+from transformers import AutoTokenizer, AutoModel  # Modelos y tokenización de HuggingFace
+from sklearn.datasets import fetch_20newsgroups  # Dataset de textos
+from sklearn.metrics import classification_report  # Métricas de evaluación
+import numpy as np  # Operaciones numéricas
+import torch.nn as nn
+import torch.optim as optim
 
-# 1. Cargar el dataset 20 Newsgroups
+# === 1. Cargar el dataset 20 Newsgroups ===
+# Descarga textos de 20 categorías para entrenar y probar
 entrenamiento = fetch_20newsgroups(subset='train', remove=('headers', 'footers', 'quotes'))
 prueba = fetch_20newsgroups(subset='test', remove=('headers', 'footers', 'quotes'))
 
-
-# 2. Tokenizar y obtener embeddings con un modelo de HuggingFace
+# === 2. Tokenizar y obtener embeddings con un modelo de HuggingFace ===
+# Convierte textos en vectores numéricos usando un modelo preentrenado
 NOMBRE_MODELO = 'sentence-transformers/all-MiniLM-L6-v2'
 tokenizador = AutoTokenizer.from_pretrained(NOMBRE_MODELO)
 modelo = AutoModel.from_pretrained(NOMBRE_MODELO)
@@ -24,7 +28,8 @@ modelo.eval()
 
 y_train = train.target
 y_test = test.target
-# Función para obtener el embedding promedio de cada texto
+
+# Función: convierte una lista de textos en una matriz de embeddings
 def obtener_embeddings(textos, tam_lote=32):
     todos_embeddings = []
     with torch.no_grad():
@@ -32,20 +37,22 @@ def obtener_embeddings(textos, tam_lote=32):
             lote = textos[i:i+tam_lote]
             codificado = tokenizador(lote, padding=True, truncation=True, return_tensors='pt', max_length=128)
             salidas = modelo(**codificado)
-            # Usar el embedding [CLS] o el promedio de los embeddings de las palabras
+            # Promedia los vectores de cada palabra del texto
             embeddings = salidas.last_hidden_state.mean(dim=1)
             todos_embeddings.append(embeddings.cpu().numpy())
     return np.vstack(todos_embeddings)
 
+y_entrenamiento = entrenamiento.target
+y_prueba = prueba.target
+# Obtiene los embeddings para entrenamiento y prueba
 X_entrenamiento = obtener_embeddings(entrenamiento.data)
 X_prueba = obtener_embeddings(prueba.data)
 y_entrenamiento = entrenamiento.target
 y_prueba = prueba.target
 
-# 3. Clasificador simple en PyTorch (una capa lineal)
-import torch.nn as nn
-import torch.optim as optim
-
+dimension_entrada = X_entrenamiento.shape[1]
+# === 3. Clasificador simple en PyTorch (una capa lineal) ===
+# Red neuronal mínima: solo una capa lineal
 class ClasificadorSimple(nn.Module):
     def __init__(self, dimension_entrada, num_clases):
         super().__init__()
@@ -57,7 +64,8 @@ dimension_entrada = X_entrenamiento.shape[1]
 num_clases = len(entrenamiento.target_names)
 clasificador = ClasificadorSimple(dimension_entrada, num_clases)
 
-# Entrenamiento
+# === 4. Entrenamiento del clasificador ===
+# Ajusta los pesos para minimizar el error de clasificación
 EPOCAS = 10
 TAM_LOTE = 64
 optimizador = optim.Adam(clasificador.parameters(), lr=1e-3)
@@ -79,7 +87,8 @@ for epoca in range(EPOCAS):
         optimizador.step()
     print(f"Época {epoca+1}/{EPOCAS}, Pérdida: {perdida.item():.4f}")
 
-# 4. Evaluación
+# === 5. Evaluación ===
+# Calcula métricas de desempeño sobre el conjunto de prueba
 clasificador.eval()
 X_prueba_tensor = torch.tensor(X_prueba, dtype=torch.float32)
 with torch.no_grad():
