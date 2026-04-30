@@ -21,81 +21,81 @@ corpus = [
 print("\n[OBJETIVO] Entrenar embeddings Skip-gram para predecir palabras de contexto dado un target.\n")
 
 # 2. Tokenización y vocabulario
-sentences = [s.split() for s in corpus]
-tokens = [w for s in sentences for w in s]
-vocab = sorted(set(tokens))
-word2idx = {w: i for i, w in enumerate(vocab)}
-idx2word = {i: w for w, i in word2idx.items()}
-V = len(vocab)
+oraciones = [frase.split() for frase in corpus]
+palabras = [palabra for oracion in oraciones for palabra in oracion]
+vocabulario = sorted(set(palabras))
+palabra_a_indice = {palabra: i for i, palabra in enumerate(vocabulario)}
+indice_a_palabra = {i: palabra for palabra, i in palabra_a_indice.items()}
+V = len(vocabulario)
 
-print(f"Vocabulario: {vocab}\n")
+print(f"Vocabulario: {vocabulario}\n")
 
 # 3. Generar pares skip-gram
-WINDOW = 2
-pairs = []
-for sent in sentences:
-    idxs = [word2idx[w] for w in sent]
-    for i, target in enumerate(idxs):
-        for j in range(max(0, i-WINDOW), min(len(idxs), i+WINDOW+1)):
+VENTANA = 2
+pares = []
+for oracion in oraciones:
+    indices = [palabra_a_indice[w] for w in oracion]
+    for i, objetivo in enumerate(indices):
+        for j in range(max(0, i-VENTANA), min(len(indices), i+VENTANA+1)):
             if i != j:
-                pairs.append((target, idxs[j]))
+                pares.append((objetivo, indices[j]))
 
-print(f"Ejemplo de pares (target -> contexto):")
-for t, c in pairs[:5]:
-    print(f"  '{idx2word[t]}' -> '{idx2word[c]}'")
+print(f"Ejemplo de pares (objetivo -> contexto):")
+for t, c in pares[:5]:
+    print(f"  '{indice_a_palabra[t]}' -> '{indice_a_palabra[c]}'")
 print()
 
 # 4. Inicializar embeddings
-EMBED_DIM = 2  # Para visualizar directo en 2D
-W_embed = np.random.normal(0, 0.1, (V, EMBED_DIM))
-W_context = np.random.normal(0, 0.1, (V, EMBED_DIM))
-W_embed_ini = W_embed.copy()
+DIM_EMB = 2  # Para visualizar directo en 2D
+W_objetivo = np.random.normal(0, 0.1, (V, DIM_EMB))
+W_contexto = np.random.normal(0, 0.1, (V, DIM_EMB))
+W_objetivo_ini = W_objetivo.copy()
 
 # 5. Ejemplo de forward pass antes de entrenar
 print("[EJEMPLO] Forward pass antes de entrenar:")
-example_t, example_c = pairs[0]
-v_t = W_embed[example_t]
-scores = W_context @ v_t
+ejemplo_t, ejemplo_c = pares[0]
+v_t = W_objetivo[ejemplo_t]
+scores = W_contexto @ v_t
 probs = np.exp(scores) / np.exp(scores).sum()
-print(f"Target: '{idx2word[example_t]}' | Contexto real: '{idx2word[example_c]}'")
+print(f"Objetivo: '{indice_a_palabra[ejemplo_t]}' | Contexto real: '{indice_a_palabra[ejemplo_c]}'")
 print("Probabilidades de contexto predichas:")
 for idx, p in enumerate(probs):
-    print(f"  {idx2word[idx]:10s}: {p:.3f}")
-loss = -np.log(probs[example_c])
+    print(f"  {indice_a_palabra[idx]:10s}: {p:.3f}")
+loss = -np.log(probs[ejemplo_c])
 print(f"Cross-entropy loss para el par: {loss:.4f}\n")
 
 # 6. Entrenamiento
-LR = 0.1
-EPOCHS = 100
+TASA_APRENDIZAJE = 0.1
+EPOCAS = 100
 print("[ENTRENAMIENTO]\n")
-for epoch in range(EPOCHS):
-    np.random.shuffle(pairs)
-    total_loss = 0
-    for t, c in pairs:
+for epoca in range(EPOCAS):
+    np.random.shuffle(pares)
+    perdida_total = 0
+    for t, c in pares:
         # ---- FORWARD ----
-        v_t = W_embed[t]
-        scores = W_context @ v_t
+        v_t = W_objetivo[t]
+        scores = W_contexto @ v_t
         probs = np.exp(scores) / np.exp(scores).sum()
         # ---- LOSS ----
-        loss = -np.log(probs[c])
-        total_loss += loss
+        perdida = -np.log(probs[c])
+        perdida_total += perdida
         # ---- BACKWARD ----
-        grad_out = probs.copy()  # (predicción)
-        grad_out[c] -= 1         # (predicción - realidad)
+        grad_salida = probs.copy()  # (predicción)
+        grad_salida[c] -= 1         # (predicción - realidad)
         # ---- UPDATE ----
-        W_context -= LR * np.outer(grad_out, v_t)
-        W_embed[t] -= LR * (W_context.T @ grad_out)
-    if (epoch+1) % 20 == 0:
-        print(f"Época {epoch+1:3d} | Loss promedio: {total_loss/len(pairs):.4f}")
+        W_contexto -= TASA_APRENDIZAJE * np.outer(grad_salida, v_t)
+        W_objetivo[t] -= TASA_APRENDIZAJE * (W_contexto.T @ grad_salida)
+    if (epoca+1) % 20 == 0:
+        print(f"Época {epoca+1:3d} | Pérdida promedio: {perdida_total/len(pares):.4f}")
 
 # 7. Visualización de embeddings antes y después
 plt.figure(figsize=(10,5))
-for i, (mat, title) in enumerate(zip([W_embed_ini, W_embed], ["Antes de entrenar", "Después de entrenar"])):
+for i, (mat, titulo) in enumerate(zip([W_objetivo_ini, W_objetivo], ["Antes de entrenar", "Después de entrenar"])):
     plt.subplot(1,2,i+1)
     plt.scatter(mat[:,0], mat[:,1], color='steelblue')
-    for idx, w in idx2word.items():
-        plt.text(mat[idx,0], mat[idx,1], w, fontsize=12)
-    plt.title(title)
+    for idx, palabra in indice_a_palabra.items():
+        plt.text(mat[idx,0], mat[idx,1], palabra, fontsize=12)
+    plt.title(titulo)
     plt.axis('equal')
 plt.suptitle("Embeddings Skip-gram — Convergencia Visual")
 plt.tight_layout()
@@ -103,22 +103,22 @@ plt.show()
 
 # 8. Similitud coseno entre palabras
 print("\n[SIMILITUD COSENO ENTRE PALABRAS]")
-emb_norm = W_embed / (np.linalg.norm(W_embed, axis=1, keepdims=True) + 1e-8)
-sim_matrix = cosine_similarity(emb_norm)
-for idx, w in idx2word.items():
-    sims = sim_matrix[idx]
+emb_norm = W_objetivo / (np.linalg.norm(W_objetivo, axis=1, keepdims=True) + 1e-8)
+matriz_sim = cosine_similarity(emb_norm)
+for idx, palabra in indice_a_palabra.items():
+    sims = matriz_sim[idx]
     top_idx = np.argsort(sims)[::-1][1:4]  # top 3 (excluye sí mismo)
-    vecinos = [(idx2word[i], sims[i]) for i in top_idx]
+    vecinos = [(indice_a_palabra[i], sims[i]) for i in top_idx]
     vecinos_str = ", ".join(f"{v} ({s:.2f})" for v, s in vecinos)
-    print(f"  {w:10s} → {vecinos_str}")
+    print(f"  {palabra:10s} → {vecinos_str}")
 
 # 9. Mini test final: palabras más similares a "perro"
 print("\n[TEST FINAL] Palabras más similares a 'perro':")
-if "perro" in word2idx:
-    idx = word2idx["perro"]
-    sims = sim_matrix[idx]
+if "perro" in palabra_a_indice:
+    idx = palabra_a_indice["perro"]
+    sims = matriz_sim[idx]
     top_idx = np.argsort(sims)[::-1][1:4]
     for i in top_idx:
-        print(f"  {idx2word[i]} ({sims[i]:.2f})")
+        print(f"  {indice_a_palabra[i]} ({sims[i]:.2f})")
 else:
     print("  'perro' no está en el vocabulario.")
