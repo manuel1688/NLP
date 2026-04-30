@@ -26,8 +26,8 @@ tokenizador = AutoTokenizer.from_pretrained(NOMBRE_MODELO)
 modelo = AutoModel.from_pretrained(NOMBRE_MODELO)
 modelo.eval()
 
-y_train = train.target
-y_test = test.target
+y_train = entrenamiento.target
+y_test = prueba.target
 
 # Función: convierte una lista de textos en una matriz de embeddings
 def obtener_embeddings(textos, tam_lote=32):
